@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="TABLE_02" runOnChange="false" author="jb">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tax_form_history"/>
+            </not>
+        </preConditions>
+        <sql>
+            CREATE TABLE tax_form_history (
+                                              id         SERIAL PRIMARY KEY,
+                                              tax_form_id INT REFERENCES tax_forms(id),
+                                              created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+                                              type       VARCHAR                  NOT NULL,
+                                              CHECK ( type IN (
+                                                               'SUBMITTED',
+                                                               'RETURNED',
+                                                               'ACCEPTED'
+                                                  ) )
+            );
+        </sql>
+        <comment>
+            Creates the tax_form_history table.
+        </comment>
+    </changeSet>
+
+</databaseChangeLog>

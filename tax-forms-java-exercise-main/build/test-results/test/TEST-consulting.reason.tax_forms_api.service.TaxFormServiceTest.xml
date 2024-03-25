@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="consulting.reason.tax_forms_api.service.TaxFormServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-03-24T23:51:35" hostname="Zellurs-MacBook-Pro.local" time="0.318">
+  <properties/>
+  <testcase name="testUpdateTaxFormDetailsWithInvalidRequest()" classname="consulting.reason.tax_forms_api.service.TaxFormServiceTest" time="0.318"/>
+  <system-out><![CDATA[06:51:34.203 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [consulting.reason.tax_forms_api.service.TaxFormServiceTest]: TaxFormServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+06:51:34.248 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration consulting.reason.tax_forms_api.TaxFormsApiApplication for test class consulting.reason.tax_forms_api.service.TaxFormServiceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.3)
+
+2024-03-25T06:51:34.384+07:00  INFO 1872 --- [    Test worker] c.r.t.service.TaxFormServiceTest         : Starting TaxFormServiceTest using Java 21.0.1 with PID 1872 (started by rakib in /Users/rakib/work/personal/zr-system/projects/andr3/tax-forms-java-exercise-main)
+2024-03-25T06:51:34.385+07:00  INFO 1872 --- [    Test worker] c.r.t.service.TaxFormServiceTest         : The following 1 profile is active: "test"
+2024-03-25T06:51:34.512+07:00  INFO 1872 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-25T06:51:34.535+07:00  INFO 1872 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 2 JPA repository interfaces.
+2024-03-25T06:51:34.553+07:00  INFO 1872 --- [    Test worker] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2024-03-25T06:51:34.615+07:00  INFO 1872 --- [    Test worker] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:91aa1f6f-4877-442b-a400-b0046c3e6b83;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2024-03-25T06:51:34.710+07:00  INFO 1872 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-25T06:51:34.731+07:00  INFO 1872 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-03-25T06:51:34.745+07:00  INFO 1872 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-25T06:51:34.787+07:00  WARN 1872 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000511: The 2.2.0 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
+2024-03-25T06:51:34.789+07:00  WARN 1872 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-25T06:51:34.851+07:00  INFO 1872 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-25T06:51:35.178+07:00  INFO 1872 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: alter table if exists tax_form_history drop constraint if exists FK12p8hihauj8erojyy0vhh8fin
+Hibernate: drop table if exists tax_form_history cascade
+Hibernate: drop table if exists tax_forms cascade
+Hibernate: create table tax_form_history (id serial not null, tax_form_id integer not null, created_at timestamp(6) with time zone not null, type varchar(255) not null check (type in ('NOT_STARTED','IN_PROGRESS','SUBMITTED','RETURNED','ACCEPTED')), primary key (id))
+Hibernate: create table tax_forms (form_year integer not null, id serial not null, created_at timestamp(6) with time zone, updated_at timestamp(6) with time zone, form_name varchar(255) not null, status varchar(255) not null check (status in ('NOT_STARTED','IN_PROGRESS','SUBMITTED','RETURNED','ACCEPTED')), details VARCHAR2, primary key (id))
+Hibernate: alter table if exists tax_form_history add constraint FK12p8hihauj8erojyy0vhh8fin foreign key (tax_form_id) references tax_forms
+2024-03-25T06:51:35.199+07:00  INFO 1872 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-25T06:51:35.371+07:00  INFO 1872 --- [    Test worker] c.r.t.service.TaxFormServiceTest         : Started TaxFormServiceTest in 1.093 seconds (process running for 1.515)
+Hibernate: insert into tax_forms (created_at,details,form_name,form_year,status,updated_at) values (?,?,?,?,?,?)
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/rakib/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.12/be4984cb6fd1ef1d11f218a648889dfda44b8a15/byte-buddy-agent-1.14.12.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
